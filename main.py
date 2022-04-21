@@ -41,8 +41,10 @@ def get_text_messages(message):
            urldog = response['image']
            bot.send_photo(chat_id, photo=urldog, caption="Не будет собаки, будет лиса \U0001F61C")
 
-       elif ms_text == "Прислать анекдот":
-           bot.send_message(chat_id, text=get_anekdot())
+       elif ms_text == "Напишите":
+             bot.send_message(message.chat.id,"Введите текст на английском языке")
+
+
 
        elif ms_text == "Карту!":
            if game21 == None:
@@ -50,7 +52,7 @@ def get_text_messages(message):
                return
 
            text_game = game21.get_cards(1)
-           bot.send_media_group(chat_id, media=getMediaCards(game21))  # получим и отправим изображения карт
+           bot.send_media_group(chat_id, media=getMediaCards(game21))
            bot.send_message(chat_id, text=text_game)
 
            if game21.status != None:
@@ -132,6 +134,8 @@ def get_anekdot():
    for result in result_find:
        array_anekdots.append(result.getText().strip())
    return array_anekdots[0]
+
+def get_send_message():
 
 
 
